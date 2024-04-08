@@ -1,0 +1,145 @@
+In this article
+
+    Different Methods
+    Prerequisites
+    Installation Procedure
+    Creating a Sample Project
+    Testing the Development Server
+    Uninstall Django
+
+Play icon
+Video Thumbnail Image
+In this article
+
+    Different Methods
+    Prerequisites
+    Installation Procedure
+    Creating a Sample Project
+    Testing the Development Server
+    Uninstall Django
+
+View All
+How to Install Django on Ubuntu
+
+Django is a Python web framework that allows you to create interactive websites and applications. You can easily build Python web applications with Django and rely on the framework to do a lot of the heavy lifting for you.
+
+It's fast and designed to help developers get their apps up and running as soon as possible. SQL Injection, XSS, CSRF, and clickjacking are all common security errors that Django helps developers to avoid.
+
+This tutorial will show you how to install Django on an Ubuntu 18.04 server. After installation, you'll create a new project to serve as the foundation for your website.
+
+Django supports four main databases (PostgreSQL, MariaDB, MySQL, Oracle and SQLite) and community libraries support other popular SQL and NoSQL databases at various levels. We recommend that you select the same database for both production and development, even though Django brings many of the differences in the database using its Object-Relational Mapper (ORM).
+Different Methods
+
+Depending on your needs and how you want to set up your development environment, there are different ways to install Django. These have various advantages and any one method might accommodate you better than others.
+
+Some of the various methods are:
+
+    Global install from packages: Django packages can be installed with the conventional apt package manager in the official repositories in Ubuntu. This is straightforward, but not so flexible. The version contained in the repositories may also be lagging behind the official project versions.
+    Install with pip in a virtual environment: Using tools like venv and virtualenv, you can create an independent environment for your projects. A virtual environment enables you to install Django in the project directory, along with other project customizations and packages. This approach to work with Django is normally the most practical and recommended.
+    Development version install with git: Instead of stable release, you can get the code from the Git repo if you want to install the latest development version. This needs to be done in your virtual environment and to obtain the most current features/fixes. However, development models do not have the same guarantees of stability as more stable versions.
+
+Prerequisites
+Hardware Requirements
+
+    RAM- 2 GB
+    Storage- 4 of Hard Disk Space
+
+Software Requirements
+
+    Web Browser: Any browser such as Google Chrome, Mozilla Firefox, Microsoft Edge.
+    Operating System: An Ubuntu 18.04 server installed with a non-root sudo user and firewall.
+
+Installation Procedure
+Global Install from Packages
+
+The process is very simple if you want to install Django using the Ubuntu repositories.
+
+Step 1: update your local package index with apt:
+
+$ sudo apt update
+
+Step 2: Now check the version of python you have installed in your Ubuntu server. You can check it by using:
+
+$ python3 –V
+
+Copy Code
+
+Step 3: Now, you can install Django on your system:
+
+$ sudo apt install python3-django
+
+Copy Code
+
+Step 4: You can check the installation with:
+
+$ django-admin –version
+
+Copy Code
+
+Output:
+This results in a successful installation of the software. You may also find that the version of Django is not the latest stable version.
+Install with pip in a Virtual Environment
+
+Django can be installed flexibly and easily on your system within a virtual environment. We'll demonstrate how to instal Django in a virtual environment that will be created in the standard Python 3 library with the venv module. With this tool, you can create virtual Python environment without affecting the rest of the system, and install python packages. Thus, regardless of conflict with the requirements of other projects, you can select Python packages on a project basis.
+
+* 1. First refresh the local package index:
+
+$ sudo apt update
+
+
+* 2. Check the installed python version:
+
+$ python3 -V 
+
+
+* 3. Now, use Ubuntu repositories to install pip:
+
+$ sudo apt install python3-pip
+
+
+* 4. Once the pip has been installed, the venv package can be installed:
+
+$ sudo apt install python3-venv
+
+
+* Step 5: Now, you can create a virtual environment for it whenever you start a new project. Begin with creating a new project directory and move it to a new project directory:
+
+$ mkdir ~/newpProject
+$ cd ~/newProject
+
+
+* Step 6: Next, create a virtual environment for your Python version in the project directory using the python command. We'll call my_env as our virtual environment, but you should call it descriptive:
+
+$ python3.6 - venv my_env
+
+
+* Step 7: This will instal standalone python versions and pip in your project directory into an isolated directory structure. A directory with the name you specify will be created to hold the file hierarchy where your packages will be installed.
+
+You can install packages into the isolated environment by:
+
+$ source my_env/bin/activate
+
+
+* Step 8: Your prompt should update to show that your virtual environment is now in place. It will look something like (my env)username@hostname:~/newProject$.
+
+You can use pip to install Django in your new environment. Whatever version of your Python, when you are in your virtual environment you should only call pip. Also note that since you install locally, you won't have to use sudo:
+
+(my_env) $  pip install django
+
+
+* Step 9: You can verify the installation by:
+
+(my_env) $  django-admin –version
+
+Note that the version shown here may differ.
+
+
+* Step 10: You need to issue the deactivate command from anywhere on the system to get out of your virtual environment:
+
+(my_env) $ deactivate
+
+
+* Step 11: The conventional display should return to your prompt. If you want to work on your project again, reactivate your virtual environment by returning to your project directory and activating:
+
+$ cd ~/newProject
+$ source my_env/bin/activate
